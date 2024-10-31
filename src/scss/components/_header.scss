@@ -1,0 +1,227 @@
+.header {
+  padding: 12px 0;
+
+  @include mobile {
+    padding: 8px 0;
+  }
+
+  &__wrapper {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(12, 1fr);
+
+    @include tablet {
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__logo {
+    height: fit-content;
+    max-width: 70px;
+
+    @include mobile {
+      max-width: 39px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 1px dashed var(--black);
+    }
+  }
+
+  &__nav {
+    grid-column: 9 / 1 span;
+
+    @include tablet {
+      grid-column: 5 / 1 span;
+    }
+
+    @include mobile {
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      overflow-y: auto;
+      width: 50%;
+      height: 100%;
+      background-color: var(--active-color);
+      transform: translateX(100%);
+      transition: transform .3s ease-in-out;
+    }
+
+    &--active {
+      @include mobile {
+        transform: translateX(0);
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include mobile {
+      padding: 60px 20px;
+      gap: 40px;
+    }
+  }
+
+  &__item {
+    font-size: 18px;
+    color: var(--dark-color);
+
+    @include small-tablet {
+      font-size: 13px;
+    }
+
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+
+  &__link {
+    transition: color .3 ease-in-out;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 1px dashed var(--black);
+    }
+
+    @include hover {
+      color: var(--light);
+    }
+
+    &:active {
+      color: var(--active-color);
+    }
+  }
+
+  &__phone {
+    display: block;
+    grid-column: 11 / 2 span;
+    margin-left: auto;
+    height: fit-content;
+    font-size: 18px;
+    color: var(--dark-color);
+    transition: color .3 ease-in-out;
+
+    @include tablet {
+      grid-column: 7 / 2 span;
+    }
+
+    @include small-tablet {
+      font-size: 13px;
+    }
+
+    @include mobile {
+      display: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 1px dashed var(--black);
+    }
+
+    @include hover {
+      color: var(--light);
+    }
+
+    &:active {
+      color: var(--active-color);
+    }
+  }
+
+  &__burger {
+    display: none;
+
+    @include mobile {
+      position: relative;
+      z-index: 2;
+      display: block;
+      place-self: center end;
+      grid-column: 4 / 1 span;
+      width: 24px;
+      height: 12px;
+
+      &-line {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 1px;
+        background-color: var(--black);
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--black);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 50%;
+        height: 1px;
+        background-color: var(--black);
+      }
+
+      &--active {
+        &::before {
+          top: 50%;
+          transform: rotate(45deg);
+          transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+        }
+
+        &::after {
+          top: 50%;
+          width: 100%;
+          transform: rotate(-45deg);
+          transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+        }
+
+        .header__burger-line {
+          transform: scale(0);
+          transition: transform 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+}

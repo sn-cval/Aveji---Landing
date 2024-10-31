@@ -1,0 +1,100 @@
+.footer {
+  padding: 16px 0;
+
+  @include mobile {
+    padding: 36px 0 20px;
+  }
+
+  &__wrapper {
+    @include flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+
+    @include mobile {
+      flex-direction: column-reverse;
+      align-items: center;
+      margin: 0 auto;
+      max-width: 241px;
+      gap: 24px;
+    }
+  }
+
+  &__left {
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  &__slash {
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__desc {
+    margin: 0;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: var(--dark-color);
+
+    @include small-tablet {
+      font-size: 12px;
+    }
+
+    @include mobile {
+      font-size: 18px;
+    }
+
+    &--indent {
+      margin-bottom: 4px;
+    }
+  }
+
+  &__privacy {
+    margin: 0;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: var(--dark-color);
+  }
+
+  &__right {
+    @include flex;
+
+    gap: 40px;
+
+    @include tablet {
+      gap: 10px;
+    }
+
+    @include mobile {
+      gap: 40px;
+    }
+  }
+
+  &__link {
+    transition: color .3s ease-in-out;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 1px dashed var(--dark-color);
+      outline-offset: 2px;
+    }
+
+    @include hover {
+      color: var(--light);
+    }
+
+    &:active {
+      color: var(--active-color);
+    }
+  }
+}

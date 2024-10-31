@@ -1,0 +1,106 @@
+.section-project {
+  padding: var(--indent) 0;
+
+  @include mobile {
+    padding: var(--indent-mobile) 0;
+  }
+
+  &__container {
+    @include mobile {
+      padding-right: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include mobile {
+      margin-bottom: 20px;
+      padding-right: 15px;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+
+    @include mobile {
+      display: flex;
+      gap: 0;
+    }
+  }
+
+  &__content {
+    position: relative;
+    grid-column: 4 span;
+    overflow: hidden;
+
+    @include hover {
+      .section-project__desc {
+        transform: translateY(0);
+      }
+
+      .section-project__image {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__desc {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: rgba(33, 37, 41, 0.5);
+    transform: translateY(100%);
+    transition: transform .3s ease-in-out;
+
+    &::after {
+      @include bg-cover;
+
+      content: '';
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      background-image: url("data:image/svg+xml,%3Csvg width='13' height='13' viewBox='0 0 13 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='11.8684' y1='2.18556e-08' x2='11.8684' y2='12' stroke='white'/%3E%3Cline x1='12' y1='0.5' y2='0.5' stroke='white'/%3E%3Cline x1='11.722' y1='0.985145' x2='0.985134' y2='11.722' stroke='white'/%3E%3C/svg%3E");
+      transform: translateY(-50%);
+    }
+
+    @include mobile {
+      padding: 10px;
+      transform: translateY(0);
+    }
+  }
+
+  &__image {
+    transition: transform .3s ease-in-out;
+  }
+
+  &__name {
+    color: var(--light-color);
+  }
+
+  &__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: border .3s ease-in-out;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      border: 1px solid #000;
+    }
+
+    @include hover {
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,171 @@
+.section-order {
+  padding: var(--indent) 0 104px;
+
+  @include mobile {
+    padding: var(--indent-mobile) 0;
+  }
+
+  &__wrapper {
+    display: grid;
+    column-gap: 20px;
+    grid-template-columns: repeat(12, 1fr);
+
+    @include tablet {
+      grid-template-columns: repeat(8, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__left {
+    grid-column: 5 span;
+
+    @include tablet {
+      grid-column: 4 span;
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__right {
+    grid-column: 7 / 6 span;
+
+    @include tablet {
+      grid-column: 5 / 4 span;
+    }
+
+    @include mobile {
+      grid-column: 4 span;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include mobile {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 72px;
+    color: var(--black);
+
+    @include tablet {
+      margin-bottom: 40px;
+    }
+
+    @include mobile {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__form {
+    @include flex;
+
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    max-width: 562px;
+    gap: 16px;
+
+    @include mobile {
+      margin-bottom: 28px;
+    }
+  }
+
+  &__label {
+    width: 100%;
+  }
+
+  &__input {
+    border-bottom: 1px solid var(--dark-color);
+    padding: 0 0 12px;
+    width: 100%;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--dark-color);
+    transition: border-bottom, .3s ease-in-out;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      border-bottom: 1px solid var(--light);
+    }
+
+    @include hover {
+      border-bottom: 1px solid var(--active-color);
+    }
+
+    &:active {
+      border-bottom: 1px solid var(--active-color);
+    }
+
+    &--success {
+      border-bottom: 1px solid var(--success);
+    }
+
+    &--error {
+      border-bottom: 1px solid var(--error);
+    }
+  }
+
+  &__btn {
+    margin-top: 8px;
+    padding: 12px 20px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: var(--light-color);
+    background-color: var(--dark-color);
+    transition: background-color .3s ease-in-out, color .3s ease-in-out;
+
+    @include mobile {
+      margin-top: 4px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      color: var(--dark-color);
+      background-color: var(--active-color);
+    }
+
+    @include hover {
+      color: var(--dark-color);
+      background-color: var(--light);
+    }
+
+    &:active {
+      color: var(--dark-color);
+      background-color: var(--active-color);
+    }
+  }
+
+  &__icons {
+    @include flex-v-center;
+
+    gap: 8px;
+  }
+
+  &__link {
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 1px dashed var(--dark-color);
+      outline-offset: 2px;
+    }
+  }
+}
